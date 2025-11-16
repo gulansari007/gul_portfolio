@@ -177,9 +177,27 @@ function App() {
       `}</style>
 
       {/* Navbar */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-4 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-lg shadow-lg' : 'bg-transparent'
-        }`}>
-        <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+      <nav className={`
+  fixed top-0 left-0 right-0 z-50 
+  flex justify-between items-center 
+  transition-all duration-300
+  
+  /* Default = Mobile */
+  px-3 py-6 text-sm space-x-1.5 h-18
+
+  /* Tablet & above */
+  sm:px-6 sm:py-4 sm:text-base
+
+  /* Desktop */
+  md:px-6 md:py-4 
+
+  ${scrolled 
+    ? 'bg-white/90 backdrop-blur-lg shadow-lg' 
+    : 'bg-transparent'
+  }
+`}
+>
+        <h1 className="font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent sm:text-2xl text-lg">
           Flutter Developer
         </h1>
         <div className="flex space-x-6 font-semibold">
@@ -315,7 +333,7 @@ function App() {
             </span>
           </div>
           <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Skills & Technologies
             </span>
           </h2>
@@ -433,7 +451,7 @@ function App() {
       {/* Projects Section */}
       <section id="projects" className="px-8 py-24 bg-white relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-br from-blue-100/30 to-purple-100/30 rounded-full blur-3xl -z-10"></div>
-        <h2 className="text-5xl font-bold text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+        <h2 className="p-1 text-5xl font-bold text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
           Projects
         </h2>
 
@@ -538,7 +556,7 @@ function App() {
       </a>
 
       <a
-        href="https://linkedin.com/in/your-profile"
+        href="https://www.linkedin.com/in/gul-mohammad-093207396 "
         target="_blank"
         rel="noreferrer"
         className="bg-white/20 p-5 rounded-2xl hover:bg-white/30 transition-all duration-300 shadow-xl hover:-translate-y-2"
