@@ -44,13 +44,13 @@ function App() {
     "Flutter": {
     level: 85,
     experience: "1+ years",
-    projects: "5+ apps",
+    projects: "7+ projects",
     description: "Building high-performance cross-platform mobile applications"
   },
    "Dart": {
     level: 90,
     experience: "1+ years",
-    projects: "5+ apps",
+    // projects: "7+ projects",
     description: "Writing clean, efficient, and scalable Dart code for Flutter apps"
   },
   "Firebase": {
@@ -62,13 +62,13 @@ function App() {
    "GetX": {
     level: 95,
     experience: "1+ years",
-    projects: "5+ apps",
+    projects: "7+ projects",
     description: "State management, routing, and dependency injection with GetX"
   },
   "State Management": {
     level: 92,
     
-    projects: "20+ implementations",
+    // projects: "20+ implementations",
     description: "Managing complex app states using GetX, Provider, and reactive patterns"
   },
 
@@ -89,7 +89,7 @@ function App() {
   "UI/UX Design": {
     level: 88,
     experience: "1+ years",
-    projects: "25+ UIs",
+    // projects: "25+ UIs",
     description: "Designing clean, modern, and user-friendly mobile interfaces"
   },
 
@@ -145,8 +145,14 @@ function App() {
     },
     {
       title: "No Scroll - Kill Reels App",
-      description: "Created an innovative mobile application that transforms real-world landmarks into personalized geographic typography designs. Leveraged the Google Maps API to intelligently map alphabetic characters to precise global locations, forming visually stunning letter shapes from actual geography. Designed and implemented a fully interactive custom art creation feature, allowing users to generate unique map-based artworks with customizable styles and layouts. Enhanced the user experience with smooth zoom, pan, and landmark positioning controls, ensuring precise placement and creative flexibility.",
+      description: "-------------------",
       gradient: "from-red-400 to-pink-400",
+      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80"
+    },
+    {
+      title: "Weather",
+      description: "This Flutter-based weather application delivers real-time weather updates through a visually immersive and interactive experience. Powered by the OpenWeather API, it provides precise temperature insights, extended forecasts, humidity details, and wind analytics within a clean and modern interface. The UI adapts dynamically to changing weather conditions and features smooth Lottie animations that visually represent different environments. To ensure fast performance and uninterrupted usability, the app uses Hive for efficient local storage, enabling instant access to the latest weather data even when offline. This project highlights strong expertise in Flutter development, API integration, animation, and creating polished, production-ready mobile interfaces.",
+      gradient: "from-green-400 to-pink-400",
       image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80"
     }
   ];
@@ -294,12 +300,37 @@ function App() {
     </div>
 
   </div>
+  
 </div>
+
 
       </section>
 
+    <div className="text-center bg-white py-10">
+  <a
+    href="https://drive.google.com/file/d/1wRYPLcyNxVtbxb5TWPVN3AOA-JP64Gh6/view?usp=drive_link"
+    className="
+      px-6 py-3 
+      rounded-full 
+      font-semibold 
+      text-white 
+      bg-gradient-to-r from-blue-500 to-purple-500
+      shadow-sm shadow-purple-300/40
+      hover:scale-105 hover:shadow-xl 
+      flex items-center gap-2 mx-auto
+      transition-all duration-300
+      inline-flex
+    "
+  >
+    Resume 
+    <span className="text-xl">➜</span>
+  </a>
+</div>
+
+
+
       {/* About Section */}
-      <section id="about" className="px-8 py-24 bg-white relative overflow-hidden">
+      <section id="about" className="px-8 py-15 bg-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30 -z-10"></div>
         <h2 className="text-5xl font-bold text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
           About Me
@@ -449,9 +480,9 @@ function App() {
     </section>
 
       {/* Projects Section */}
-      <section id="projects" className="px-8 py-24 bg-white relative overflow-hidden">
+      <section id="projects" className="px-8 py-15 bg-white relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-br from-blue-100/30 to-purple-100/30 rounded-full blur-3xl -z-10"></div>
-        <h2 className="p-1 text-5xl font-bold text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+        <h2 className="p-2 text-5xl font-bold text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
           Projects
         </h2>
 
@@ -484,7 +515,7 @@ function App() {
       </section>
 
       {/* Education Section */}
-      <section id="education" className="px-8 py-24 bg-gradient-to-br from-blue-50 to-purple-50 relative">
+      <section id="education" className="px-8 py-15 bg-gradient-to-br from-blue-50 to-purple-50 relative">
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-200 rounded-full blur-3xl opacity-20 -z-10"></div>
         <h2 className="text-5xl font-bold text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
           Education
@@ -568,7 +599,7 @@ function App() {
     {/* Email Button */}
     <a
       href="mailto:gulansariii00@gmail.com"
-      className="mt-14 inline-block bg-white text-blue-700 px-12 py-5 rounded-full shadow-2xl hover:shadow-[0_20px_40px_rgba(255,255,255,0.4)] font-bold text-lg tracking-wide transform hover:-translate-y-1 transition-all duration-300"
+      className="mt-14 inline-block bg-white text-blue-700 px-12 py-5 rounded-full shadow-xl hover:shadow-[0_12px_12px_gray-100] font-bold text-lg tracking-wide transform hover:-translate-y-1 transition-all duration-300"
     >
       Email Me
     </a>
