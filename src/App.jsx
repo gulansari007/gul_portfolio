@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Code, Zap, Award, TrendingUp } from 'lucide-react';
 import React, { useState } from 'react';
 import gul from './assets/gul.png'
+import emailjs from "emailjs-com";
 import {
   SiFlutter,
   SiDart,
@@ -245,6 +246,68 @@ function App() {
   const [currentIndexes, setCurrentIndexes] = useState(
     projects.map(() => 0)
   );
+  
+
+  // contacts section
+   const [name, setName] = useState("");
+  const [comment, setComment] = useState("");
+  const [allComments, setAllComments] = useState([]);
+
+  // Load comments only for YOU from localStorage
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("myPrivateComments")) || [];
+     Promise.resolve().then(() => {
+    setAllComments(saved);
+  });
+}, []);
+ 
+
+  // Save updated comments
+  useEffect(() => {
+    localStorage.setItem("myPrivateComments", JSON.stringify(allComments));
+  }, [allComments]);
+
+  // Add comment
+  const handleSubmit = () => {
+    if (name.trim() === "" || comment.trim() === "") return;
+
+    const newComment = {
+      id: Date.now(),
+      name,
+      comment,
+      profile: name.charAt(0).toUpperCase(),
+    };
+
+    setAllComments([...allComments, newComment]);
+
+    setName("");
+    setComment("");
+
+     // Send the comment to Gmail via EmailJS
+    emailjs.send(
+      "service_aaaiwyy",
+      "template_sq2h28o",
+      {
+        message: comment,
+        email_to: "gulansariii00@gmail.com",
+      },
+      "qpBhVCO2sIDU4zvEA"
+    );
+
+    setComment("");
+    alert("Your comment has been sent successfully!");
+  
+  };
+
+  // Delete comment
+  const deleteComment = (id) => {
+    const updated = allComments.filter((c) => c.id !== id);
+    setAllComments(updated);
+  };
+
+  
+  
+   
 
 
   return (
@@ -699,74 +762,138 @@ function App() {
             </p>
           </div>
         </div>
+
       </section>
 
       {/* Contact Section */}
       <section
-        id="contact"
-        className="relative px-8 py-12 bg-gray-700 text-white overflow-hidden"
-      >
-        {/* Soft Overlay */}
-        <div className="absolute inset-0 bg-white/10 backdrop-blur-sm -z-10"></div>
+      id="contact"
+      className="relative px-8 py-12 bg-gray-700 text-white overflow-hidden"
+    >
+      <div className="absolute inset-0 bg-white/10 backdrop-blur-sm -z-10"></div>
 
-        {/* Heading */}
-        <h2 className="text-5xl font-extrabold text-center drop-shadow-lg tracking-wide">
-          Contact Me
-        </h2>
+      <h2 className="text-5xl font-extrabold text-center drop-shadow-lg tracking-wide">
+        Contact Me
+      </h2>
 
-        {/* Content Wrapper */}
-        <div className="max-w-2xl mx-auto mt-14 text-center">
-          <p className="text-2xl opacity-90 leading-relaxed">
-            Want to collaborate or hire me? I’d love to connect!
+      <div className="max-w-2xl mx-auto mt-14 text-center">
+        <p className="text-2xl opacity-90 leading-relaxed">
+          Want to collaborate or hire me? I’d love to connect!
+        </p>
+
+        {/* Contact Details */}
+        <div className="mt-12 space-y-5 text-lg">
+          <p className="flex justify-center items-center gap-3 text-xl">
+            <span className="text-3xl">📞</span>
+            <span className="font-semibold tracking-wide">+91 9997807424</span>
           </p>
 
-          {/* Contact Details */}
-          <div className="mt-12 space-y-5 text-lg">
-            <p className="flex justify-center items-center gap-3 text-xl">
-              <span className="text-3xl">📞</span>
-              <span className="font-semibold tracking-wide">+91 9997807424</span>
-            </p>
+          <p className="flex justify-center items-center gap-3 text-xl">
+            <span className="text-3xl">📍</span>
+            <span className="font-semibold tracking-wide">Delhi, India</span>
+          </p>
+        </div>
 
-            <p className="flex justify-center items-center gap-3 text-xl">
-              <span className="text-3xl">📍</span>
-              <span className="font-semibold tracking-wide">Delhi, India</span>
-            </p>
-          </div>
-
-          {/* Social Icons */}
-          <div className="flex justify-center space-x-10 mt-14">
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noreferrer"
-              className="bg-white/20 p-5 rounded-2xl hover:bg-white/30 transition-all duration-300 shadow-xl hover:-translate-y-2"
-            >
-              <FaGithub size={42} />
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/gul-mohammad-093207396 "
-              target="_blank"
-              rel="noreferrer"
-              className="bg-white/20 p-5 rounded-2xl hover:bg-white/30 transition-all duration-300 shadow-xl hover:-translate-y-2"
-            >
-              <FaLinkedin size={42} />
-            </a>
-          </div>
-
-          {/* Email Button */}
+        {/* Social Icons */}
+        <div className="flex justify-center space-x-10 mt-14">
           <a
-            href="mailto:gulansariii00@gmail.com"
-            className="mt-14 inline-block bg-white text-blue-700 px-12 py-5 rounded-full shadow-xl hover:shadow-[0_12px_12px_gray-100] font-bold text-lg tracking-wide transform hover:-translate-y-1 transition-all duration-300"
+            href="https://github.com"
+            target="_blank"
+            rel="noreferrer"
+            className="bg-white/20 p-5 rounded-2xl hover:bg-white/30 transition-all duration-300 shadow-xl hover:-translate-y-2"
           >
-            Email Me
+            <FaGithub size={42} />
           </a>
 
-          <div className="pt-6 text-xl opacity-90 font-medium tracking-wide">
-            gulansariii00@gmail.com
+          <a
+            href="https://www.linkedin.com/in/gul-mohammad-093207396"
+            target="_blank"
+            rel="noreferrer"
+            className="bg-white/20 p-5 rounded-2xl hover:bg-white/30 transition-all duration-300 shadow-xl hover:-translate-y-2"
+          >
+            <FaLinkedin size={42} />
+          </a>
+        </div>
+
+        {/* Email Button */}
+        <a
+          href="mailto:gulansariii00@gmail.com"
+          className="mt-14 inline-block bg-white text-blue-700 px-12 py-5 rounded-full shadow-xl hover:shadow-[0_12px_12px_gray-100] font-bold text-lg tracking-wide transform hover:-translate-y-1 transition-all duration-300"
+        >
+          Email Me
+        </a>
+
+        <div className="pt-6 text-xl opacity-90 font-medium tracking-wide">
+          gulansariii00@gmail.com
+        </div>
+
+        {/* COMMENT INPUT BOX */}
+      <div className="mt-16 space-y-4">
+          <input 
+            type="text"
+            value={name}
+            placeholder="Enter your name"
+            onChange={(e) => setName(e.target.value)}
+            className="w-full p-4 text-black rounded-xl bg-gray-100"
+          />
+
+          <textarea
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            placeholder="Write your comment..."
+            className="w-full p-4 h-32 text-black rounded-xl bg-gray-100"
+          />
+
+          <button
+            onClick={handleSubmit}
+            className="mt-2 bg-blue-500 px-10 py-3 rounded-full text-lg font-semibold hover:bg-blue-600 transition-all"
+          >
+            Comment
+          </button>
+        </div>
+
+            {/* Comments List */}
+        <div className="mt-12 text-left ">
+          <h3 className="text-2xl font-bold mb-4">Comments:</h3>
+
+          <div className="space-y-4">
+            {allComments.map((item) => (
+              <div
+                key={item.id}
+                className="flex items-start justify-between gap-4 bg-white/20 backdrop-blur-sm p-4 rounded-xl"
+              >
+                {/* Left: Profile + Text */}
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-xl font-bold">
+                    {item.profile}
+                  </div>
+
+                  <div>
+                    <p className="font-bold text-lg">{item.name}</p>
+                    <p className="opacity-90">{item.comment}</p>
+                  </div>
+                </div>
+
+                {/* Delete Button */}
+                <button
+                  onClick={() => deleteComment(item.id)}
+                  className="text-red-400 hover:text-red-600 font-semibold"
+                >
+                  Delete
+                </button>
+              </div>
+            ))}
+
+            {allComments.length === 0 && (
+              <p className="text-gray-300">No comments yet.</p>
+            )}
           </div>
         </div>
-      </section>
+
+      
+      
+      </div>
+    </section>
 
 
 
